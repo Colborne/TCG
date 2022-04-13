@@ -59,12 +59,15 @@ public class Player : MonoBehaviour
 
     public void PlayCard(Button button)
     {
-        var index = Array.IndexOf(visibleHand, button);
-
-        if(sp >= hand[index].SPR)
+        if(FindObjectOfType<TurnManager>().currentPlayer == this)
         {
-            currentCard = hand[index];
-            hand[index] = null;
+            var index = Array.IndexOf(visibleHand, button);
+
+            if(sp >= hand[index].SPR)
+            {
+                currentCard = hand[index];
+                hand[index] = null;
+            }
         }
     }
 
@@ -105,7 +108,7 @@ public class Player : MonoBehaviour
                     return;
                 }
             }
-            
+
             if(hand.Length < 5)
             {
                 Array.Resize(ref hand, hand.Length + 1);
