@@ -41,6 +41,15 @@ TextureImporter:
   - first:
       213: -6313942132209019885
     second: cards-Sheet_12
+  - first:
+      213: -5275337104593377167
+    second: cards-Sheet_13
+  - first:
+      213: 2343857982767467517
+    second: cards-Sheet_14
+  - first:
+      213: 4744570313548252093
+    second: cards-Sheet_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -434,6 +443,69 @@ TextureImporter:
       bones: []
       spriteID: 3141f4d551f5068a0800000000000000
       internalID: -6313942132209019885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cards-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17826427adc3ac6b0800000000000000
+      internalID: -5275337104593377167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cards-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb81d2ca6e078020800000000000000
+      internalID: 2343857982767467517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cards-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db348e6ff8918d140800000000000000
+      internalID: 4744570313548252093
       vertices: []
       indices: 
       edges: []

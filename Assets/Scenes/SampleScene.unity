@@ -761,6 +761,7 @@ MonoBehaviour:
   - {fileID: 4624859850816139878, guid: 47dda84c850343b4fbd4951ad286b23d, type: 3}
   - {fileID: 4385833668803932651, guid: 03d070dbfd021954895bb9e1c965e520, type: 3}
   - {fileID: 5561366240608599783, guid: c144d4eacb9ca094fb35fddde42e1886, type: 3}
+  - {fileID: 5561366240608599783, guid: 290666b90d0f4fb44af113d48fa3dfde, type: 3}
   hand: []
   field: []
   visibleHand:
@@ -2896,6 +2897,7 @@ MonoBehaviour:
   - {fileID: 4624859850816139878, guid: 47dda84c850343b4fbd4951ad286b23d, type: 3}
   - {fileID: 4385833668803932651, guid: 03d070dbfd021954895bb9e1c965e520, type: 3}
   - {fileID: 5561366240608599783, guid: c144d4eacb9ca094fb35fddde42e1886, type: 3}
+  - {fileID: 5561366240608599783, guid: 290666b90d0f4fb44af113d48fa3dfde, type: 3}
   hand: []
   field: []
   visibleHand:

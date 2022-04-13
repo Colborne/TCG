@@ -11,7 +11,8 @@ public class Card : MonoBehaviour
         Heal,
         Summoning,
         Duplicate,
-        Swap
+        Swap,
+        Evolve
     }
 
     public enum Phase
@@ -25,6 +26,7 @@ public class Card : MonoBehaviour
     public Phase phase;
     public Sprite portrait;
     public int cardPosition;
+    public Card evolution;
 
     public int[] attackPattern;
     void Start()
@@ -57,6 +59,14 @@ public class Card : MonoBehaviour
                     
                     player.visibleField[cardPosition].image.sprite = player.field[cardPosition].portrait;
                     target.visibleField[cardPosition].image.sprite = target.field[cardPosition].portrait;
+                }
+                break;
+            case Ability.Evolve:
+                if(evolution != null)
+                {
+                    player.field[cardPosition] = evolution;
+                    player.visibleField[cardPosition].image.sprite = evolution.portrait;
+                    player.field[cardPosition].cardPosition = cardPosition;
                 }
                 break;
         }

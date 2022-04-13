@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         sp = 1;
 
         for(int i = 0; i < 20; i++)
-            deck.Enqueue(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>());
+            deck.Enqueue(Instantiate(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>()));
 
         for(int i = 0; i < hand.Length; i++)
             hand[i] = deck.Dequeue();
