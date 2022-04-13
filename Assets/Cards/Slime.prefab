@@ -98,4 +98,7 @@ MonoBehaviour:
   title: Slime
   SPR: 1
   ability: 4
+  phase: 0
   portrait: {fileID: 3415396671033883169, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 1
+  attackPattern: 010000000000000000000000

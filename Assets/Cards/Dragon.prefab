@@ -98,4 +98,7 @@ MonoBehaviour:
   title: Dragon
   SPR: 5
   ability: 1
+  phase: 0
   portrait: {fileID: -3247254919715690751, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 2
+  attackPattern: 010000000300000001000000

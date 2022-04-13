@@ -98,4 +98,6 @@ MonoBehaviour:
   title: Mushroom
   SPR: 1
   ability: 2
+  phase: 0
   portrait: {fileID: 6175608826519343714, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 0

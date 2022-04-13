@@ -98,4 +98,7 @@ MonoBehaviour:
   title: Wolf
   SPR: 2
   ability: 1
+  phase: 0
   portrait: {fileID: -6907215224132008198, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 0
+  attackPattern: 02000000

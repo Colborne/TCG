@@ -98,4 +98,6 @@ MonoBehaviour:
   title: Chest
   SPR: 3
   ability: 0
+  phase: 0
   portrait: {fileID: 7424322211590560262, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 0

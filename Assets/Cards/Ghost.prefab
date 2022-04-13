@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Ghost
-  SPR: 3
+  SPR: 2
   ability: 1
+  phase: 0
   portrait: {fileID: 8975614635583178452, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 2
+  attackPattern: 010000000000000001000000

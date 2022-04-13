@@ -98,4 +98,7 @@ MonoBehaviour:
   title: Knight
   SPR: 3
   ability: 1
+  phase: 0
   portrait: {fileID: 8161665102323392712, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 0
+  attackPattern: 010000000100000001000000

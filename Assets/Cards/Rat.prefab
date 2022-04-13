@@ -98,4 +98,7 @@ MonoBehaviour:
   title: Rat
   SPR: 1
   ability: 1
+  phase: 0
   portrait: {fileID: 2231509165137175997, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  cardPosition: 3
+  attackPattern: 01000000
