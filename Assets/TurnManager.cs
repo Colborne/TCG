@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour
     public Player currentPlayer, target;
     public bool startingTurn;
     public int whichPlayer = 1;
+    public int[] starting;
 
     void Start()
     {
@@ -32,9 +33,16 @@ public class TurnManager : MonoBehaviour
         currentPlayer.sp++;
         currentPlayer.Draw();
 
+        starting = new int[] {0,0,0,0,0};
         for(int i = 0; i < currentPlayer.field.Length; i++)
         {
-            if(currentPlayer.field[i] != null && currentPlayer.field[i].phase == Card.Phase.Beginning)
+            if(currentPlayer.field[i] != null)
+                starting[i] = 1;
+        }
+
+        for(int i = 0; i < currentPlayer.field.Length; i++)
+        {
+            if(currentPlayer.field[i] != null && starting[i] == 1 && currentPlayer.field[i].phase == Card.Phase.Beginning)
                 currentPlayer.field[i].UseAbility(currentPlayer, target);
         }
         

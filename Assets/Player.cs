@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         alreadyPlayed = false;
 
         for(int i = 0; i < 20; i++)
-            deck.Enqueue(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>());
+            deck.Enqueue(Instantiate(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>()));
 
         for(int i = 0; i < hand.Length; i++)
             hand[i] = deck.Dequeue();
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
                 field[index].cardPosition = index;
                 visibleField[index].image.sprite = currentCard.portrait;
                 currentCard = null;
-                
+                field[index].justPlayed = false;
             }    
         }
         else
@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
                 sp -= spdif;
                 field[index] = currentCard;
                 field[index].cardPosition = index;
+                field[index].justPlayed = false;
                 visibleField[index].image.sprite = currentCard.portrait;
                 currentCard = null;
             }

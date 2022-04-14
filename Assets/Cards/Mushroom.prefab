@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424550922021918148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 100, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,8 @@ MonoBehaviour:
   ability: 2
   phase: 0
   portrait: {fileID: 6175608826519343714, guid: c8c483758e852484db57276c419e9f2b, type: 3}
-  cardPosition: 0
+  cardPosition: 2
   evolution: {fileID: 0}
-  effect: {fileID: 6245953675364399562, guid: c54c5bbc11e856c4ba06514d6693a555, type: 3}
+  effect: {fileID: 4545312847439962642, guid: 1a1fb9073c13c0e4b8dff838ffafc3cd, type: 3}
   attackPattern: 
+  justPlayed: 0
