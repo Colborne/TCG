@@ -48,6 +48,7 @@ public class Card : MonoBehaviour
         switch(ability)
         {
             case Ability.Draw:
+                EffectSpawn(player);
                 player.Draw();
                 break;
             case Ability.Bomb:
@@ -67,6 +68,7 @@ public class Card : MonoBehaviour
                 player.sp += SPR;
                 break;
             case Ability.Duplicate:
+                EffectSpawn(player);
                 for(int i = 0; i < 5; i++)
                 {
                     if(player.field[i] == null)
@@ -79,6 +81,7 @@ public class Card : MonoBehaviour
                 }
                 break;
             case Ability.Swap:
+                EffectSpawn(player);
                 if(target.field[cardPosition] != null)
                 {
                     Card temp = target.field[cardPosition];
@@ -93,7 +96,7 @@ public class Card : MonoBehaviour
                 if(evolution != null && player.sp > 0)
                 {
                     player.sp--;
-                    player.field[cardPosition] = evolution;
+                    player.field[cardPosition] = Instantiate(evolution);
                     player.visibleField[cardPosition].image.sprite = evolution.portrait;
                     player.field[cardPosition].cardPosition = cardPosition;
                 }
@@ -109,7 +112,7 @@ public class Card : MonoBehaviour
                 break;
             case Ability.DrainMana:
                 EffectSpawn(player);
-                target.sp -= player.field[cardPosition].SPR;
+                target.sp = Mathf.Max(0, target.sp - player.field[cardPosition].SPR);
                 break;
             case Ability.StealMana:
                 EffectSpawn(player);
@@ -147,7 +150,7 @@ public class Card : MonoBehaviour
                 int rand = Random.Range(0,3);
                 if(rand == 0)
                 {
-                    rand = Random.Range(0,player.hand.Length);
+                    rand = Random.Range(0, player.hand.Length);
                     player.hand[rand] = null;
                     player.visibleHand[rand].image.sprite = player.UISprite;
                 }
