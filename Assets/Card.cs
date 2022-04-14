@@ -12,12 +12,14 @@ public class Card : MonoBehaviour
         Summoning,
         Duplicate,
         Swap,
-        Evolve
+        Evolve,
+        Bomb
     }
 
     public enum Phase
     {
         Beginning,
+        During,
         End
     }
     public string title;
@@ -27,6 +29,7 @@ public class Card : MonoBehaviour
     public Sprite portrait;
     public int cardPosition;
     public Card evolution;
+    public GameObject effect;
 
     public int[] attackPattern;
     void Start()
@@ -41,14 +44,32 @@ public class Card : MonoBehaviour
             case Ability.Draw:
                 player.Draw();
                 break;
+            case Ability.Bomb:
+                player.hp -= SPR;
+                player.field[cardPosition] = null;
+                player.visibleField[cardPosition].image.sprite = player.UISprite;
+                break;
             case Ability.Damage:
-                Damage(target);
+                Damage(player, target);
                 break;
             case Ability.Heal:
+                Instantiate(effect, transform.position, Quaternion.identity);
                 player.hp += SPR;
                 break;
             case Ability.Summoning:
+                Instantiate(effect, transform.position, Quaternion.identity);
                 player.sp += SPR;
+                break;
+            case Ability.Duplicate:
+                for(int i = 0; i < 5; i++)
+                {
+                    if(player.field[i] == null)
+                    {
+                        player.field[i] = this;
+                        player.visibleField[i].image.sprite = this.portrait;
+                        return;
+                    }
+                }
                 break;
             case Ability.Swap:
                 if(target.field[cardPosition] != null)
@@ -72,8 +93,9 @@ public class Card : MonoBehaviour
         }
     }
 
-    public void Damage(Player target)
+    public void Damage(Player player, Player target)
     {
+        
         int leftDamage = 0;
         int mainDamage = 0;
         int rightDamage = 0;
@@ -91,12 +113,27 @@ public class Card : MonoBehaviour
         {
             if(target.field[i] != null)
             {
+                int damage = 0;
+                RectTransform rect = player.visibleField[cardPosition].GetComponent<RectTransform>();
+                var attack = Instantiate(effect, Vector3.zero, rect.rotation);
+                attack.GetComponent<Projectile>().destination = new Vector3(target.visibleField[i].GetComponent<RectTransform>().localPosition.x,
+                    target.visibleField[i].GetComponent<RectTransform>().localPosition.y,
+                    -50);
+
                 if(i == cardPosition - 1)
-                    target.hp -= Mathf.Max(0, leftDamage - target.field[i].SPR);
+                    damage = Mathf.Max(0, leftDamage - target.field[i].SPR);
                 else if(i == cardPosition)
-                    target.hp -= Mathf.Max(0, mainDamage - target.field[i].SPR);
+                    damage = Mathf.Max(0, mainDamage - target.field[i].SPR);
                 else if(i == cardPosition + 1)
-                    target.hp -= Mathf.Max(0, rightDamage - target.field[i].SPR);
+                    damage = Mathf.Max(0, rightDamage - target.field[i].SPR);
+
+                if(damage > 0)
+                {
+                    target.hp -= damage;
+                    target.field[i] = null;
+                    target.visibleField[i].image.sprite = target.UISprite;
+                }
+
             }
             else
             {

@@ -98,8 +98,9 @@ MonoBehaviour:
   title: Goose
   SPR: 4
   ability: 1
-  phase: 0
+  phase: 1
   portrait: {fileID: 4744570313548252093, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 0
   evolution: {fileID: 0}
+  effect: {fileID: 1914048862322524236, guid: 3ab098b9f1e2b09418e62d8a00000442, type: 3}
   attackPattern: 04000000

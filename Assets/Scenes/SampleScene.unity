@@ -762,6 +762,8 @@ MonoBehaviour:
   - {fileID: 4385833668803932651, guid: 03d070dbfd021954895bb9e1c965e520, type: 3}
   - {fileID: 5561366240608599783, guid: c144d4eacb9ca094fb35fddde42e1886, type: 3}
   - {fileID: 5561366240608599783, guid: 290666b90d0f4fb44af113d48fa3dfde, type: 3}
+  - {fileID: 5561366240608599783, guid: 667a16bab9fa58d498278eb08147d29a, type: 3}
+  - {fileID: 5561366240608599783, guid: 31405873c7aa7994ca08b51e418b644e, type: 3}
   hand: []
   field: []
   visibleHand:
@@ -785,6 +787,7 @@ MonoBehaviour:
   tempCard: {fileID: 863147514}
   hp: 0
   sp: 0
+  alreadyPlayed: 0
 --- !u!4 &237709899
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,9 +1004,9 @@ Canvas:
   m_GameObject: {fileID: 383326412}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2020,7 +2023,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863147512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1826268087}
@@ -2898,6 +2901,8 @@ MonoBehaviour:
   - {fileID: 4385833668803932651, guid: 03d070dbfd021954895bb9e1c965e520, type: 3}
   - {fileID: 5561366240608599783, guid: c144d4eacb9ca094fb35fddde42e1886, type: 3}
   - {fileID: 5561366240608599783, guid: 290666b90d0f4fb44af113d48fa3dfde, type: 3}
+  - {fileID: 5561366240608599783, guid: 667a16bab9fa58d498278eb08147d29a, type: 3}
+  - {fileID: 5561366240608599783, guid: 31405873c7aa7994ca08b51e418b644e, type: 3}
   hand: []
   field: []
   visibleHand:
@@ -2921,6 +2926,7 @@ MonoBehaviour:
   tempCard: {fileID: 1112079178}
   hp: 0
   sp: 0
+  alreadyPlayed: 0
 --- !u!4 &1432297837
 Transform:
   m_ObjectHideFlags: 0

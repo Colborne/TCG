@@ -50,6 +50,12 @@ TextureImporter:
   - first:
       213: 4744570313548252093
     second: cards-Sheet_15
+  - first:
+      213: 5225991703273929362
+    second: cards-Sheet_16
+  - first:
+      213: -6920458524997535361
+    second: cards-Sheet_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -506,6 +512,48 @@ TextureImporter:
       bones: []
       spriteID: db348e6ff8918d140800000000000000
       internalID: 4744570313548252093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cards-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29af7c004c3768840800000000000000
+      internalID: 5225991703273929362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cards-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79b2be33a795ff90800000000000000
+      internalID: -6920458524997535361
       vertices: []
       indices: 
       edges: []

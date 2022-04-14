@@ -101,3 +101,6 @@ MonoBehaviour:
   phase: 0
   portrait: {fileID: -4541878603765717595, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 0
+  evolution: {fileID: 0}
+  effect: {fileID: 6245953675364399562, guid: c54c5bbc11e856c4ba06514d6693a555, type: 3}
+  attackPattern: 

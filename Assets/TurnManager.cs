@@ -36,7 +36,13 @@ public class TurnManager : MonoBehaviour
         {
             if(currentPlayer.field[i] != null && currentPlayer.field[i].phase == Card.Phase.Beginning)
                 currentPlayer.field[i].UseAbility(currentPlayer, target);
-        }      
+        }
+        
+        for(int i = 0; i < currentPlayer.field.Length; i++)
+        {
+            if(currentPlayer.field[i] != null && currentPlayer.field[i].phase == Card.Phase.During)
+                currentPlayer.field[i].UseAbility(currentPlayer, target);
+        }
     }
     
     public void EndTurn()

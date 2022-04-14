@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public TMP_Text currentTurn;
     public Image tempCard;
     public int hp, sp;
+    public bool alreadyPlayed;
 
     private void Start() 
     {
@@ -30,9 +31,10 @@ public class Player : MonoBehaviour
         field = new Card[5];
         hp = 10;
         sp = 1;
+        alreadyPlayed = false;
 
         for(int i = 0; i < 20; i++)
-            deck.Enqueue(Instantiate(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>()));
+            deck.Enqueue(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>());
 
         for(int i = 0; i < hand.Length; i++)
             hand[i] = deck.Dequeue();
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
         for(int i = 0; i < hand.Length; i++){
             if(hand[i] == null)
             {
-                visibleHand[i].gameObject.SetActive(false);
+                //visibleHand[i].gameObject.SetActive(false);
             }
             else
             {
@@ -62,11 +64,24 @@ public class Player : MonoBehaviour
         if(FindObjectOfType<TurnManager>().currentPlayer == this)
         {
             var index = Array.IndexOf(visibleHand, button);
-
-            if(sp >= hand[index].SPR)
+            
+            if(currentCard != null)
+            {
+                if(!alreadyPlayed)
+                {
+                    if(hand[index] == null)
+                    {
+                        hand[index] = currentCard;
+                        visibleHand[index].image.sprite = currentCard.portrait;
+                        currentCard = null;
+                    }
+                }
+            }
+            else
             {
                 currentCard = hand[index];
                 hand[index] = null;
+                visibleHand[index].image.sprite = UISprite;
             }
         }
     }
@@ -74,21 +89,65 @@ public class Player : MonoBehaviour
     public void MoveToField(Button button) 
     {
         var index = Array.IndexOf(visibleField, button);
-        if(visibleField[index].image.sprite == UISprite)
+
+        if (currentCard == null)
         {
-            sp -= currentCard.SPR;
-            field[index] = currentCard;
-            field[index].cardPosition = index;
-            visibleField[index].image.sprite = currentCard.portrait;
-            currentCard = null;
+            currentCard = field[index];
+            field[index] = null;
+            visibleField[index].image.sprite = UISprite;
+            alreadyPlayed = true;
+            return;
         }
+
+        if(alreadyPlayed)
+        {
+            if(field[index] == null)
+            {
+                field[index] = currentCard;
+                field[index].cardPosition = index;
+                visibleField[index].image.sprite = currentCard.portrait;
+                currentCard = null;
+                alreadyPlayed = false;
+            }
+            return;
+        }
+
+        if(visibleField[index].image.sprite == UISprite && !alreadyPlayed)
+        {
+            if(sp >= currentCard.SPR)
+            {
+                sp -= currentCard.SPR;
+                field[index] = currentCard;
+                field[index].cardPosition = index;
+                visibleField[index].image.sprite = currentCard.portrait;
+                currentCard = null;
+                
+            }    
+        }
+        else
+        {
+            if(sp + field[index].SPR >= currentCard.SPR)
+            {
+                int spdif = Mathf.Max(0,currentCard.SPR - field[index].SPR);
+                sp -= spdif;
+                field[index] = currentCard;
+                field[index].cardPosition = index;
+                visibleField[index].image.sprite = currentCard.portrait;
+                currentCard = null;
+            }
+        }        
     }
 
     public void CheckMoving()
     {
         if(currentCard != null)
-        {
-            tempCard.transform.position = Input.mousePosition;
+        {          
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector3 fixedPosition = new Vector3(worldPosition.x, worldPosition.y, 0);
+
+            tempCard.GetComponent<RectTransform>().position = fixedPosition;
+            
             tempCard.sprite = currentCard.portrait;
             tempCard.enabled = true;
         }

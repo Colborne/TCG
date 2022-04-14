@@ -102,4 +102,5 @@ MonoBehaviour:
   portrait: {fileID: -5275337104593377167, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 4
   evolution: {fileID: 5561366240608599782, guid: 77e8efdedf4cc3b41b7131b7c3cfadbc, type: 3}
+  effect: {fileID: 6245953675364399562, guid: c54c5bbc11e856c4ba06514d6693a555, type: 3}
   attackPattern: 
