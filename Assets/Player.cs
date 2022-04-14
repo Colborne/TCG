@@ -8,7 +8,6 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    public List<GameObject> allCards;
     Queue<Card> deck;
     public Card[] hand;
     public Card[] field;
@@ -19,7 +18,7 @@ public class Player : MonoBehaviour
     public TMP_Text deckSize;
     public TMP_Text spSize;
     public TMP_Text hpSize;
-    public TMP_Text currentTurn;
+    public Image currentTurn;
     public Image tempCard;
     public int hp, sp;
     public bool alreadyPlayed;
@@ -34,7 +33,7 @@ public class Player : MonoBehaviour
         alreadyPlayed = false;
 
         for(int i = 0; i < 20; i++)
-            deck.Enqueue(Instantiate(allCards[UnityEngine.Random.Range(0,allCards.Count)].GetComponent<Card>()));
+            deck.Enqueue(Instantiate(FindObjectOfType<TurnManager>().allCards[UnityEngine.Random.Range(0, FindObjectOfType<TurnManager>().allCards.Count)].GetComponent<Card>()));
 
         for(int i = 0; i < hand.Length; i++)
             hand[i] = deck.Dequeue();
@@ -50,12 +49,12 @@ public class Player : MonoBehaviour
             else
             {
                 visibleHand[i].image.sprite = hand[i].portrait;
-                visibleHand[i].gameObject.SetActive(true);
+                //visibleHand[i].gameObject.SetActive(true);
             }
         }
         deckSize.text = deck.Count.ToString();
-        spSize.text = "SP: " + sp.ToString();
-        hpSize.text = "HP: " + hp.ToString();
+        spSize.text = sp.ToString();
+        hpSize.text = hp.ToString();
         CheckMoving();
     }
 

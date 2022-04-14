@@ -6,6 +6,7 @@ public class TurnManager : MonoBehaviour
 {
     public Player playerOne, playerTwo;
     public Player currentPlayer, target;
+    public List<GameObject> allCards;
     public bool startingTurn;
     public int whichPlayer = 1;
     public int[] starting;
@@ -15,6 +16,7 @@ public class TurnManager : MonoBehaviour
         startingTurn = false;
         currentPlayer = playerOne;
         target = playerTwo;
+        target.currentTurn.enabled = false;
     }
 
     void Update()

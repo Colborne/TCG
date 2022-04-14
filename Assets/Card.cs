@@ -13,7 +13,13 @@ public class Card : MonoBehaviour
         Duplicate,
         Swap,
         Evolve,
-        Bomb
+        Bomb,
+        DrainLife,
+        StealLife,
+        DrainMana,
+        StealMana,
+        ClearBoard,
+        RemoveCard
     }
 
     public enum Phase
@@ -53,23 +59,11 @@ public class Card : MonoBehaviour
                 Damage(player, target);
                 break;
             case Ability.Heal:
-                var heal = Instantiate(effect, player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition, Quaternion.identity);
-                heal.GetComponent<RectTransform>().SetParent(FindObjectOfType<Canvas>().transform);
-                heal.GetComponent<RectTransform>().localPosition = new Vector3(
-                    player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.x, 
-                    player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.y, 
-                    -50);
-                heal.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+                EffectSpawn(player);
                 player.hp += SPR;
                 break;
             case Ability.Summoning:
-                var sum = Instantiate(effect, player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition, Quaternion.identity);
-                sum.GetComponent<RectTransform>().SetParent(FindObjectOfType<Canvas>().transform);
-                sum.GetComponent<RectTransform>().localPosition = new Vector3(
-                    player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.x, 
-                    player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.y, 
-                    -50);
-                sum.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+                EffectSpawn(player);
                 player.sp += SPR;
                 break;
             case Ability.Duplicate:
@@ -96,11 +90,84 @@ public class Card : MonoBehaviour
                 }
                 break;
             case Ability.Evolve:
-                if(evolution != null)
+                if(evolution != null && player.sp > 0)
                 {
+                    player.sp--;
                     player.field[cardPosition] = evolution;
                     player.visibleField[cardPosition].image.sprite = evolution.portrait;
                     player.field[cardPosition].cardPosition = cardPosition;
+                }
+                break;
+            case Ability.DrainLife:
+                EffectSpawn(player);
+                target.hp -= player.field[cardPosition].SPR;
+                break;
+            case Ability.StealLife:
+                EffectSpawn(player);
+                target.hp--;
+                player.hp++;
+                break;
+            case Ability.DrainMana:
+                EffectSpawn(player);
+                target.sp -= player.field[cardPosition].SPR;
+                break;
+            case Ability.StealMana:
+                EffectSpawn(player);
+                target.sp--;
+                player.sp++;
+                break;
+            case Ability.ClearBoard:
+                EffectSpawn(player);
+                for(int i = 0; i < player.hand.Length; i++)
+                {
+                    player.hand[i] = null;
+                    player.visibleHand[i].image.sprite = player.UISprite;
+                }
+                
+                for(int i = 0; i < player.field.Length; i++)
+                {
+                    player.field[i] = null;
+                    player.visibleField[i].image.sprite = player.UISprite;
+                }
+                
+                for(int i = 0; i < target.hand.Length; i++)
+                {
+                    target.hand[i] = null;
+                    target.visibleHand[i].image.sprite = target.UISprite;
+                }
+                
+                for(int i = 0; i < target.field.Length; i++)
+                {
+                    target.field[i] = null;
+                    target.visibleField[i].image.sprite = target.UISprite;
+                }
+                break;
+            case Ability.RemoveCard:
+                EffectSpawn(player);
+                int rand = Random.Range(0,3);
+                if(rand == 0)
+                {
+                    rand = Random.Range(0,player.hand.Length);
+                    player.hand[rand] = null;
+                    player.visibleHand[rand].image.sprite = player.UISprite;
+                }
+                else if(rand == 1)
+                {
+                    rand = Random.Range(0, player.field.Length);
+                    player.field[rand] = null;
+                    player.visibleField[rand].image.sprite = player.UISprite;
+                }
+                else if(rand == 2)
+                {
+                    rand = Random.Range(0, target.hand.Length);
+                    target.hand[rand] = null;
+                    target.visibleHand[rand].image.sprite = target.UISprite;
+                }
+                else if(rand == 3)
+                {
+                    rand = Random.Range(0, target.field.Length);
+                    target.field[rand] = null;
+                    target.visibleField[rand].image.sprite = target.UISprite;
                 }
                 break;
         }
@@ -182,5 +249,16 @@ public class Card : MonoBehaviour
             target.visibleField[i].GetComponent<RectTransform>().localPosition.y,
             -50);
         attack.GetComponent<RectTransform>().localScale = new Vector3(1,1,1); 
+    }
+
+    void EffectSpawn(Player player)
+    {
+        var eff = Instantiate(effect, player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition, Quaternion.identity);
+        eff.GetComponent<RectTransform>().SetParent(FindObjectOfType<Canvas>().transform);
+        eff.GetComponent<RectTransform>().localPosition = new Vector3(
+            player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.x, 
+            player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.y, 
+            -50);
+        eff.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
     }
 }
