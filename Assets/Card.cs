@@ -19,7 +19,10 @@ public class Card : MonoBehaviour
         DrainMana,
         StealMana,
         ClearBoard,
-        RemoveCard
+        RemoveCard,
+        Spawn,
+        StealCard,
+        DeckCard
     }
 
     public enum Phase
@@ -37,7 +40,8 @@ public class Card : MonoBehaviour
     public Card evolution;
     public GameObject effect;
     public int[] attackPattern;
-    public bool justPlayed = true;
+    public Card fusion;
+    public Card spawn;
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = portrait;
@@ -49,9 +53,11 @@ public class Card : MonoBehaviour
         {
             case Ability.Draw:
                 EffectSpawn(player);
-                player.Draw();
+                for(int i = 0; i < SPR; i++)
+                    player.Draw();
                 break;
             case Ability.Bomb:
+                EffectSpawn(player);
                 player.hp -= SPR;
                 player.field[cardPosition] = null;
                 player.visibleField[cardPosition].image.sprite = player.UISprite;
@@ -93,22 +99,23 @@ public class Card : MonoBehaviour
                 }
                 break;
             case Ability.Evolve:
+                EffectSpawn(player);
                 if(evolution != null && player.sp > 0)
                 {
                     player.sp--;
                     player.field[cardPosition] = Instantiate(evolution);
                     player.visibleField[cardPosition].image.sprite = evolution.portrait;
-                    player.field[cardPosition].cardPosition = cardPosition;
+                    player.field[cardPosition].cardPosition = cardPosition; 
                 }
                 break;
             case Ability.DrainLife:
                 EffectSpawn(player);
-                target.hp -= player.field[cardPosition].SPR;
+                target.hp = Mathf.Max(0, target.hp - player.field[cardPosition].SPR);
                 break;
             case Ability.StealLife:
                 EffectSpawn(player);
-                target.hp--;
-                player.hp++;
+                target.hp = Mathf.Max(0, target.hp - 1);
+                player.hp += 1;
                 break;
             case Ability.DrainMana:
                 EffectSpawn(player);
@@ -116,33 +123,36 @@ public class Card : MonoBehaviour
                 break;
             case Ability.StealMana:
                 EffectSpawn(player);
-                target.sp--;
-                player.sp++;
+                target.sp = Mathf.Max(0, target.sp - 1);
+                player.sp += 1;
                 break;
             case Ability.ClearBoard:
-                EffectSpawn(player);
                 for(int i = 0; i < player.hand.Length; i++)
                 {
                     player.hand[i] = null;
                     player.visibleHand[i].image.sprite = player.UISprite;
+                    EffectSpawnSelected(player, true, i);
                 }
                 
                 for(int i = 0; i < player.field.Length; i++)
                 {
                     player.field[i] = null;
                     player.visibleField[i].image.sprite = player.UISprite;
+                    EffectSpawnSelected(player, false, i);
                 }
                 
                 for(int i = 0; i < target.hand.Length; i++)
                 {
                     target.hand[i] = null;
                     target.visibleHand[i].image.sprite = target.UISprite;
+                    EffectSpawnSelected(target, true, i);
                 }
                 
                 for(int i = 0; i < target.field.Length; i++)
                 {
                     target.field[i] = null;
                     target.visibleField[i].image.sprite = target.UISprite;
+                    EffectSpawnSelected(target, false, i);
                 }
                 break;
             case Ability.RemoveCard:
@@ -153,24 +163,58 @@ public class Card : MonoBehaviour
                     rand = Random.Range(0, player.hand.Length);
                     player.hand[rand] = null;
                     player.visibleHand[rand].image.sprite = player.UISprite;
+                    EffectSpawnSelected(player, true, rand);
                 }
                 else if(rand == 1)
                 {
                     rand = Random.Range(0, player.field.Length);
                     player.field[rand] = null;
                     player.visibleField[rand].image.sprite = player.UISprite;
+                    EffectSpawnSelected(player, false, rand);
                 }
                 else if(rand == 2)
                 {
                     rand = Random.Range(0, target.hand.Length);
                     target.hand[rand] = null;
                     target.visibleHand[rand].image.sprite = target.UISprite;
+                    EffectSpawnSelected(target, true, rand);
                 }
                 else if(rand == 3)
                 {
                     rand = Random.Range(0, target.field.Length);
                     target.field[rand] = null;
                     target.visibleField[rand].image.sprite = target.UISprite;
+                    EffectSpawnSelected(target, false, rand);
+                }
+                break;
+            case Ability.Spawn:
+                for(int i = 0; i < 5; i++)
+                {
+                    if(target.field[i] == null)
+                    {
+                        target.field[i] = Instantiate(spawn);
+                        target.field[i].cardPosition = i;
+                        target.visibleField[i].image.sprite = spawn.portrait;
+                        EffectSpawnSelected(target, false, i);
+                    }
+                }
+                break;
+            case Ability.StealCard:
+                EffectSpawn(player);
+                if(target.deck.Count > 0)
+                {
+                    player.field[cardPosition] = target.deck.Dequeue();
+                    player.visibleField[cardPosition].image.sprite = player.field[cardPosition].portrait;
+                    player.field[cardPosition].cardPosition = cardPosition;
+                }
+                break;
+            case Ability.DeckCard:
+                EffectSpawn(player);
+                if(player.deck.Count > 0)
+                {
+                    player.field[cardPosition] = player.deck.Dequeue();
+                    player.visibleField[cardPosition].image.sprite = player.field[cardPosition].portrait;
+                    player.field[cardPosition].cardPosition = cardPosition;
                 }
                 break;
         }
@@ -263,5 +307,29 @@ public class Card : MonoBehaviour
             player.visibleField[cardPosition].GetComponent<RectTransform>().localPosition.y, 
             -50);
         eff.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+    }
+
+    void EffectSpawnSelected(Player player, bool isHand, int i)
+    {
+        if(isHand)
+        {
+            var eff = Instantiate(effect, player.visibleHand[i].GetComponent<RectTransform>().localPosition, Quaternion.identity);
+            eff.GetComponent<RectTransform>().SetParent(FindObjectOfType<Canvas>().transform);
+            eff.GetComponent<RectTransform>().localPosition = new Vector3(
+                player.visibleHand[i].GetComponent<RectTransform>().localPosition.x, 
+                player.visibleHand[i].GetComponent<RectTransform>().localPosition.y, 
+                -50);
+            eff.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+        }
+        else
+        {
+            var eff = Instantiate(effect, player.visibleField[i].GetComponent<RectTransform>().localPosition, Quaternion.identity);
+            eff.GetComponent<RectTransform>().SetParent(FindObjectOfType<Canvas>().transform);
+            eff.GetComponent<RectTransform>().localPosition = new Vector3(
+                player.visibleField[i].GetComponent<RectTransform>().localPosition.x, 
+                player.visibleField[i].GetComponent<RectTransform>().localPosition.y, 
+                -50);
+            eff.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+        }
     }
 }

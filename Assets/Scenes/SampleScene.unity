@@ -3162,6 +3162,15 @@ MonoBehaviour:
   - {fileID: 5561366240608599783, guid: a4201c7cf5aebf4448ea9d742a045ae7, type: 3}
   - {fileID: 5561366240608599783, guid: 41124460d2594ca488538fa73c3332f2, type: 3}
   - {fileID: 5561366240608599783, guid: c144d4eacb9ca094fb35fddde42e1886, type: 3}
+  - {fileID: 5561366240608599783, guid: af4c45acde1e2a84c8f87ab9203ef5fd, type: 3}
+  - {fileID: 3585616186530619448, guid: 822249a3bc1fa064f8807fb35cfabbab, type: 3}
+  - {fileID: 5561366240608599783, guid: 1470366b05c36ef4c99dcd85eaea4089, type: 3}
+  - {fileID: 8013194224310808813, guid: ec969cc1fd3492e499a5c9c9d03a464b, type: 3}
+  - {fileID: 5561366240608599783, guid: eec4d6f06b0d99f4d81feaf4b8a40528, type: 3}
+  - {fileID: 8013194224310808813, guid: 3532ba9739277da4fa6334a76c9c5ec6, type: 3}
+  - {fileID: 2368234839074009673, guid: c32d54a594fa45841a465647295abdf2, type: 3}
+  - {fileID: 2368234839074009673, guid: 421a156b920ed834aba3ddc5f3fd113c, type: 3}
+  - {fileID: 3585616186530619448, guid: 01680f5fa00adc843942247750dcdeaa, type: 3}
   startingTurn: 0
   whichPlayer: 1
   starting: 

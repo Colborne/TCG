@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -6920458524997535361, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,13 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475336ae73e07eb478e320a7dfbf25ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Wolf
+  title: Bomb
   SPR: 1
   ability: 7
   phase: 1
   portrait: {fileID: -6920458524997535361, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 1
-  evolution: {fileID: 0}
-  effect: {fileID: 1914048862322524236, guid: 3ab098b9f1e2b09418e62d8a00000442, type: 3}
+  evolution: {fileID: 5561366240608599782, guid: 10c5c0551a8eeaa41aea2e56a5b94538, type: 3}
+  effect: {fileID: 6245953675364399562, guid: 3cd9c2c717f26d34281163ab928b6c83, type: 3}
   attackPattern: 
-  justPlayed: 0
+  fusion: {fileID: 5561366240608599782, guid: eec4d6f06b0d99f4d81feaf4b8a40528, type: 3}
+  spawn: {fileID: 0}

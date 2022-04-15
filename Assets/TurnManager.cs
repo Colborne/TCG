@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
         currentPlayer = playerOne;
         target = playerTwo;
         target.currentTurn.enabled = false;
+        target.sp = 0;
     }
 
     void Update()
@@ -44,8 +45,9 @@ public class TurnManager : MonoBehaviour
 
         for(int i = 0; i < currentPlayer.field.Length; i++)
         {
-            if(currentPlayer.field[i] != null && starting[i] == 1 && currentPlayer.field[i].phase == Card.Phase.Beginning)
+            if(currentPlayer.field[i] != null && starting[i] == 1 && currentPlayer.field[i].phase == Card.Phase.Beginning){
                 currentPlayer.field[i].UseAbility(currentPlayer, target);
+            }
         }
         
         for(int i = 0; i < currentPlayer.field.Length; i++)

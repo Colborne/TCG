@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 8975614635583178452, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,11 +97,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ghost
   SPR: 2
-  ability: 1
-  phase: 1
+  ability: 8
+  phase: 0
   portrait: {fileID: 8975614635583178452, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 3
   evolution: {fileID: 0}
-  effect: {fileID: 1914048862322524236, guid: 3ab098b9f1e2b09418e62d8a00000442, type: 3}
-  attackPattern: 010000000000000001000000
-  justPlayed: 0
+  effect: {fileID: 6245953675364399562, guid: 9e84a4d632a1c6d4bb132245974637c3, type: 3}
+  attackPattern: 
+  fusion: {fileID: 0}
+  spawn: {fileID: 0}

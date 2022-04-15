@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 5225991703273929362, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +98,11 @@ MonoBehaviour:
   title: Pixie
   SPR: 2
   ability: 2
-  phase: 1
+  phase: 0
   portrait: {fileID: 5225991703273929362, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 3
   evolution: {fileID: 0}
   effect: {fileID: 4545312847439962642, guid: 1a1fb9073c13c0e4b8dff838ffafc3cd, type: 3}
   attackPattern: 
-  justPlayed: 0
+  fusion: {fileID: 0}
+  spawn: {fileID: 0}

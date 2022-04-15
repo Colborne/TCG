@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -3470162450749527640, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   portrait: {fileID: -3470162450749527640, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 3
   evolution: {fileID: 0}
-  effect: {fileID: 6245953675364399562, guid: 47d3623cef801b542b76d30ab98e291b, type: 3}
+  effect: {fileID: 6245953675364399562, guid: 3dff83cbcf6d40f448293e72da6afbc1, type: 3}
   attackPattern: 
-  justPlayed: 0
+  fusion: {fileID: 0}
+  spawn: {fileID: 0}

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 4668176560494405985, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +98,11 @@ MonoBehaviour:
   title: Wizard
   SPR: 2
   ability: 11
-  phase: 1
+  phase: 0
   portrait: {fileID: 4668176560494405985, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 2
   evolution: {fileID: 0}
-  effect: {fileID: 6245953675364399562, guid: c54c5bbc11e856c4ba06514d6693a555, type: 3}
+  effect: {fileID: 6245953675364399562, guid: 9e84a4d632a1c6d4bb132245974637c3, type: 3}
   attackPattern: 
-  justPlayed: 0
+  fusion: {fileID: 0}
+  spawn: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5561366240608599833}
   - component: {fileID: 5561366240608599782}
   m_Layer: 0
-  m_Name: Wolf
+  m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6907215224132008198, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  m_Sprite: {fileID: 8155546676190925717, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,14 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475336ae73e07eb478e320a7dfbf25ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Wolf
-  SPR: 2
+  title: Bear
+  SPR: 4
   ability: 1
   phase: 1
-  portrait: {fileID: -6907215224132008198, guid: c8c483758e852484db57276c419e9f2b, type: 3}
+  portrait: {fileID: 8155546676190925717, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 3
   evolution: {fileID: 0}
   effect: {fileID: 1914048862322524236, guid: 3ab098b9f1e2b09418e62d8a00000442, type: 3}
-  attackPattern: 02000000
+  attackPattern: 020000000000000002000000
   fusion: {fileID: 0}
   spawn: {fileID: 0}

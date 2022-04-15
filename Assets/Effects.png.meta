@@ -38,6 +38,15 @@ TextureImporter:
   - first:
       213: -7125811559464083784
     second: Effects_11
+  - first:
+      213: -6026981111418200015
+    second: Effects_12
+  - first:
+      213: 8004989225374737428
+    second: Effects_13
+  - first:
+      213: -5690077226991261269
+    second: Effects_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -410,6 +419,69 @@ TextureImporter:
       bones: []
       spriteID: 8be55cd04280c1d90800000000000000
       internalID: -7125811559464083784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effects_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130ede98c9cdb5ca0800000000000000
+      internalID: -6026981111418200015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effects_13
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4146a49c94f671f60800000000000000
+      internalID: 8004989225374737428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effects_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba965acc8e8c801b0800000000000000
+      internalID: -5690077226991261269
       vertices: []
       indices: 
       edges: []

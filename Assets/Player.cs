@@ -8,7 +8,7 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    Queue<Card> deck;
+    public Queue<Card> deck;
     public Card[] hand;
     public Card[] field;
     public Button[] visibleHand;
@@ -42,15 +42,9 @@ public class Player : MonoBehaviour
     private void Update() 
     {
         for(int i = 0; i < hand.Length; i++){
-            if(hand[i] == null)
-            {
-                //visibleHand[i].gameObject.SetActive(false);
-            }
-            else
-            {
+            if(hand[i] != null)
                 visibleHand[i].image.sprite = hand[i].portrait;
-                //visibleHand[i].gameObject.SetActive(true);
-            }
+
         }
         deckSize.text = deck.Count.ToString();
         spSize.text = sp.ToString();
@@ -87,55 +81,67 @@ public class Player : MonoBehaviour
 
     public void MoveToField(Button button) 
     {
-        var index = Array.IndexOf(visibleField, button);
-
-        if (currentCard == null)
+        if(FindObjectOfType<TurnManager>().currentPlayer == this)
         {
-            currentCard = field[index];
-            field[index] = null;
-            visibleField[index].image.sprite = UISprite;
-            alreadyPlayed = true;
-            return;
-        }
+            if(!visibleField.Contains(button))
+                return;
 
-        if(alreadyPlayed)
-        {
-            if(field[index] == null)
+            var index = Array.IndexOf(visibleField, button);
+
+            if (currentCard == null)
             {
-                field[index] = currentCard;
-                field[index].cardPosition = index;
-                visibleField[index].image.sprite = currentCard.portrait;
-                currentCard = null;
-                alreadyPlayed = false;
+                currentCard = field[index];
+                field[index] = null;
+                visibleField[index].image.sprite = UISprite;
+                alreadyPlayed = true;
+                return;
             }
-            return;
-        }
 
-        if(visibleField[index].image.sprite == UISprite && !alreadyPlayed)
-        {
-            if(sp >= currentCard.SPR)
+            if(alreadyPlayed)
             {
-                sp -= currentCard.SPR;
-                field[index] = currentCard;
-                field[index].cardPosition = index;
-                visibleField[index].image.sprite = currentCard.portrait;
-                currentCard = null;
-                field[index].justPlayed = false;
-            }    
-        }
-        else
-        {
-            if(sp + field[index].SPR >= currentCard.SPR)
-            {
-                int spdif = Mathf.Max(0,currentCard.SPR - field[index].SPR);
-                sp -= spdif;
-                field[index] = currentCard;
-                field[index].cardPosition = index;
-                field[index].justPlayed = false;
-                visibleField[index].image.sprite = currentCard.portrait;
-                currentCard = null;
+                if(field[index] == null)
+                {
+                    field[index] = currentCard;
+                    field[index].cardPosition = index;
+                    visibleField[index].image.sprite = currentCard.portrait;
+                    currentCard = null;
+                    alreadyPlayed = false;
+                }
+                else if(currentCard.fusion.title == field[index].title)
+                {
+                    field[index] = currentCard.evolution;
+                    field[index].cardPosition = index;
+                    visibleField[index].image.sprite = currentCard.evolution.portrait;
+                    currentCard = null;
+                    alreadyPlayed = false;
+                }
+                return;
             }
-        }        
+
+            if(visibleField[index].image.sprite == UISprite && !alreadyPlayed)
+            {
+                if(sp >= currentCard.SPR)
+                {
+                    sp -= currentCard.SPR;
+                    field[index] = currentCard;
+                    field[index].cardPosition = index;
+                    visibleField[index].image.sprite = currentCard.portrait;
+                    currentCard = null;
+                }    
+            }
+            else
+            {
+                if(sp + field[index].SPR >= currentCard.SPR)
+                {
+                    int spdif = Mathf.Max(0,currentCard.SPR - field[index].SPR);
+                    sp -= spdif;
+                    field[index] = currentCard;
+                    field[index].cardPosition = index;
+                    visibleField[index].image.sprite = currentCard.portrait;
+                    currentCard = null;
+                }
+            }      
+        }  
     }
 
     public void CheckMoving()

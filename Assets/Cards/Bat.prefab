@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -7992092901687565743, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +98,11 @@ MonoBehaviour:
   title: Bat
   SPR: 1
   ability: 6
-  phase: 0
+  phase: 1
   portrait: {fileID: -7992092901687565743, guid: c8c483758e852484db57276c419e9f2b, type: 3}
   cardPosition: 4
   evolution: {fileID: 5561366240608599782, guid: 4bfc5e6e719d8014791da3575c7297f4, type: 3}
-  effect: {fileID: 4545312847439962642, guid: 1a1fb9073c13c0e4b8dff838ffafc3cd, type: 3}
+  effect: {fileID: 6245953675364399562, guid: b4be8b4eed05390419ca5c7439c70e34, type: 3}
   attackPattern: 
-  justPlayed: 0
+  fusion: {fileID: 0}
+  spawn: {fileID: 0}
