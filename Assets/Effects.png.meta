@@ -47,6 +47,9 @@ TextureImporter:
   - first:
       213: -5690077226991261269
     second: Effects_14
+  - first:
+      213: 1148676960824267663
+    second: Effects_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -486,6 +490,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Effects_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f831b932c9be0ff00800000000000000
+      internalID: 1148676960824267663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -496,6 +521,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Effects_9: 4090799819692156374
+      Effects_2: -8248184414856976584
+      Effects_15: 1148676960824267663
+      Effects_13: 8004989225374737428
+      Effects_8: 661196975315335433
+      Effects_6: -7466522973678874103
+      Effects_5: 3832456890588305621
+      Effects_11: -7125811559464083784
+      Effects_12: -6026981111418200015
+      Effects_10: 4658627485858765526
+      Effects_0: 1571786891402097675
+      Effects_14: -5690077226991261269
+      Effects_7: 6815229166277592208
+      Effects_3: -6140521989939545447
+      Effects_4: -5810290663535272605
+      Effects_1: -3792339887870337536
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
